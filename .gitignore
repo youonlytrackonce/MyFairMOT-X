@@ -1,5 +1,11 @@
 *.pt
 *.pth
+*.jpg
+*.jpeg
+*.mp4
+*.avi
+./src/data/MOT20
+./src/data/SOMPT22
 .vscode
 .idea
 *.so

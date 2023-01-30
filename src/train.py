@@ -106,12 +106,13 @@ def run(opt):
             logger.write('{} {:8f}'.format(k, v))
             if 'time' not in k:
                 logger.write(' | ')
+        str_save_path = f'/home/ubuntu/phd/FairCenterMOT/exp/{opt.task}/{opt.exp_id}/'
+        if not os.path.isdir(str_save_path):
+            os.mkdirs(str_save_path)
 
-        if not os.path.isdir(f'/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/exp/{opt.exp_id}/'):
-            os.mkdir(f'/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/exp/{opt.exp_id}/')
-            
-        save_model(os.path.join(f'/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/exp/{opt.exp_id}/', f'model_{epoch}.pth'), epoch, model, optimizer)
-        save_model(os.path.join(f'/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/exp/{opt.exp_id}/', 'model_last.pth'), epoch, model, optimizer)
+        if epoch%5 == 0:    
+            save_model(os.path.join(str_save_path, f'model_{epoch}.pth'), epoch, model, optimizer)
+        save_model(os.path.join(str_save_path, 'model_last.pth'), epoch, model, optimizer)
 
         logger.write('\n')
 

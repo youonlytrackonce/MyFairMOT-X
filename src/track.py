@@ -258,11 +258,13 @@ def main(opt,
     
     epochnum = int(opt.load_model.split("_")[-1][:-4])
 
-    exp_root = f"/home/fatih/phd/fairmot-x-model/result/val/{exp_name}"
-    result_root = f"/home/fatih/phd/fairmot-x-model/result/val/{exp_name}/{epochnum}/"
+    
+    exp_root = f"/home/ubuntu/phd/FairCenterMOT/exp/val/{exp_name}"
+    result_root = f"/home/ubuntu/phd/FairCenterMOT/exp/val/{exp_name}/{epochnum}/"
     mkdir_if_missing(exp_root)
     mkdir_if_missing(result_root)
     
+
     data_type = 'bdd' if not opt.kitti_test else 'kitti'
 
     # run tracking
@@ -316,9 +318,9 @@ if __name__ == '__main__':
     opt.device = FindFreeGPU()
     
     if opt.kitti_test:
-        val_data = "/hpctmp/e0425991/kitti_test/"
+        val_data = "kitti_test/"
     else:
-        val_data = "/home/fatih/phd/mot_dataset/bdd100k/images/val/"
+        val_data = "/home/ubuntu/phd/mot_dataset/bdd100k/images/val/"
 
     seqs = os.listdir(val_data)
 

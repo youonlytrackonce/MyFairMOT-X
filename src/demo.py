@@ -52,9 +52,10 @@ def run_demo(opt):
     :return:
     """
 
-    seq_name='SOMPT22-14_res'
-    result_root = "/home/fatih/phd/fairmot-x-model/{}".format(seq_name)
-    mkdir_if_missing(result_root)
+    seq_name=opt.input_video
+    result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(seq_name)
+    if not os.path.isdir(result_root):
+        os.mkdirs(result_root)
 
     # clear existing frame results
     frame_res_dir = result_root + '/frame'
@@ -67,14 +68,26 @@ def run_demo(opt):
     if os.path.isfile(opt.input_video):
         videoname = opt.input_video.split("/")[-1].split(".")[0]
         dataloader = datasets.LoadVideo(opt.input_video)
+        result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(videoname)
     else:
         videoname = opt.input_video.split("/")[-1]
         if videoname == "":
-            videoname = opt.input_video.split("/")[-2]
-
+            videoname = opt.input_video.split("/")[-3]
+        else
+            videoname = opt.input_video.split("/")[-2]   
+        result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(videoname)
         dataloader = datasets.LoadImages(opt.input_video)
 
-    result_file_name = os.path.join(result_root, '{}'.format(videoname))
+    if not os.path.isdir(result_root):
+        os.mkdirs(result_root)
+    frame_res_dir = result_root + '/frame'
+    if os.path.isdir(frame_res_dir):
+        shutil.rmtree(frame_res_dir)
+        os.makedirs(frame_res_dir)
+    else:
+        os.makedirs(frame_res_dir)
+
+    result_file_name = os.path.join(result_root, '{}.txt'.format(videoname))
     
     try:
         frame_rate = dataloader.frame_rate
@@ -99,15 +112,15 @@ def run_demo(opt):
             data_type='mot')
 
     if opt.output_format == 'video':
-        exp_folder = osp.join(result_root, opt.exp_id)
+        exp_folder = osp.join(result_root)
         if not osp.exists(exp_folder):
             os.mkdir(exp_folder)
         output_video_path = osp.join(exp_folder, f'{videoname}.mp4')
-        cmd_str = 'ffmpeg -y -f image2 -i {}/%05d.jpg -b:v 5G -c:v mpeg4 {}' \
-            .format(osp.join(result_root, 'frame'), output_video_path)
+        cmd_str = 'ffmpeg -framerate 30 -i {}/%05d.jpg -c:v libx264 -pix_fmt yuv420p -crf 23 {}' \
+            .format(osp.join(frame_res_dir), output_video_path)
         os.system(cmd_str)
-        res_str = "rm -r /home/fatih/phd/fairmot-x-model/{}/frame".format(seq_name)
-        #os.system(res_str)
+        res_str = "rm -r frame_res_dir"
+        os.system(res_str)
 
 
 if __name__ == '__main__':
