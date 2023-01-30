@@ -1,0 +1,15 @@
+{
+    "root":"/home/fatih/phd/mot_dataset/bdd100k/images/",
+    "train":
+    {
+        "bdd100k":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/bdd100k.train"
+    },
+    "test_emb":
+    {
+        "bdd100k":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/bdd100k_emb.val"
+    },
+    "test":
+    {
+        "bdd100k":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/bdd100k.val"
+    }
+}
