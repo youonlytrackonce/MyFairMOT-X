@@ -1,17 +1,17 @@
-# FairMOT-X
+# FairCenterMOT
 
-FairMOT-X is a multi-class multi object tracker based on [FairMOT](https://github.com/ifzhang/FairMOT), which has been tailored for training on the BDD100K MOT Dataset. It makes use of [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) as the detector from end-to-end, and uses deformable convolutions (DCN) to perform feature fusion of PAFPN outputs for reID embedding learning.
+FairCenterMOT is a multi-class multi object tracker based on [FairMOT](https://github.com/ifzhang/FairMOT), which has been tailored for training on the BDD100K MOT Dataset. It makes use of [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX) as the detector from end-to-end, and uses deformable convolutions (DCN) to perform feature fusion of PAFPN outputs for reID embedding learning.
 
 <br>
 
 <p align="center">
-    <img src="./media/FairMOT-X.png" width="100%", height="100%"<br/>
-    <em> </br> Overview of FairMOT-X Structure</em>
+    <img src="./media/FairCenterMOT.png" width="100%", height="100%"<br/>
+    <em> </br> Overview of FairCenterMOT Structure</em>
 </p>
 
 ## Main Contributions
 
-* Modify [yolo_head.py](./src/lib/models/networks/yolo_head.py) for reID branch and reID embedding learning as done in FairMOT
+* Modify [yolo_head.py](./src/lib/models/networks/yolo_head.py) for reID branch and reID embedding learning as done in FairCenterMOT
 * Prepare dataset in [yolomot.py](./src/lib/datasets/yolomot.py) for MOT training, including mosaic implementation
 * Finetune training and tracking sequences in [yolotrainer.py](./src/lib/trains/yolotrainer.py) and [YoloTracker.py](./src/lib/tracker/YoloTracker.py)
 * Minor code adjustments for visualisation and writing results to JSON for BDD100K MOT
