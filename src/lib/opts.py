@@ -225,7 +225,7 @@ class opts(object):
 
         # dataset
         self.parser.add_argument('--data_cfg', type=str,
-                                 default='/home/ubuntu/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json',  # mcmot.json, mcmot_det.json,
+                                 default='/home/fatih/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json',  # mcmot.json, mcmot_det.json,
                                  help='load data from cfg')
         self.parser.add_argument('--data_dir',
                                  type=str,

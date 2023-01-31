@@ -106,7 +106,7 @@ def run(opt):
             logger.write('{} {:8f}'.format(k, v))
             if 'time' not in k:
                 logger.write(' | ')
-        str_save_path = f'/home/ubuntu/phd/FairCenterMOT/exp/{opt.task}/{opt.exp_id}/'
+        str_save_path = f'/home/fatih/phd/FairCenterMOT/exp/{opt.task}/{opt.exp_id}/'
         if not os.path.isdir(str_save_path):
             os.mkdirs(str_save_path)
 

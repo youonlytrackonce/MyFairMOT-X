@@ -1,16 +1,16 @@
 {
-    "root":"/home/ubuntu/phd/FairCenterMOT/src/data",
+    "root":"/home/fatih/phd/FairCenterMOT/src/data",
     "train":
     {
-        "mot20-sompt22":"/home/ubuntu/phd/FairCenterMOT/src/data/mot20-sompt22.train"
+        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/mot20-sompt22.train"
     },
     "test_emb":
     {
-        "mot20-sompt22":"/home/ubuntu/phd/FairCenterMOT/src/data/mot20-sompt22.train"
+        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/mot20-sompt22.train"
     },
     
     "test":
     {
-        "mot20-sompt22":"/home/ubuntu/phd/FairCenterMOT/src/data/mot20-sompt22.train"
+        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/mot20-sompt22.train"
     }
 }
