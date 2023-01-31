@@ -52,18 +52,6 @@ def run_demo(opt):
     :return:
     """
 
-    seq_name=opt.input_video
-    result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(seq_name)
-    if not os.path.isdir(result_root):
-        os.makedirs(result_root)
-
-    # clear existing frame results
-    frame_res_dir = result_root + '/frame'
-    if os.path.isdir(frame_res_dir):
-        shutil.rmtree(frame_res_dir)
-        os.makedirs(frame_res_dir)
-    else:
-        os.makedirs(frame_res_dir)
         
     if os.path.isfile(opt.input_video):
         videoname = opt.input_video.split("/")[-1].split(".")[0]
@@ -119,7 +107,7 @@ def run_demo(opt):
         cmd_str = 'ffmpeg -framerate 1 -i {}/%05d.jpg -c:v libx264 -r 30 {}' \
             .format(osp.join(frame_res_dir), output_video_path)
         os.system(cmd_str)
-        res_str = "rm -r frame_res_dir"
+        res_str = "rm -r {}".format(frame_res_dir)
         os.system(res_str)
 
 
