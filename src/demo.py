@@ -55,7 +55,7 @@ def run_demo(opt):
     seq_name=opt.input_video
     result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(seq_name)
     if not os.path.isdir(result_root):
-        os.mkdirs(result_root)
+        os.makedirs(result_root)
 
     # clear existing frame results
     frame_res_dir = result_root + '/frame'
@@ -73,13 +73,13 @@ def run_demo(opt):
         videoname = opt.input_video.split("/")[-1]
         if videoname == "":
             videoname = opt.input_video.split("/")[-3]
-        else
+        else:
             videoname = opt.input_video.split("/")[-2]   
         result_root = "/home/ubuntu/phd/FairCenterMOT/exp/infer/{}".format(videoname)
         dataloader = datasets.LoadImages(opt.input_video)
 
     if not os.path.isdir(result_root):
-        os.mkdirs(result_root)
+        os.makedirs(result_root)
     frame_res_dir = result_root + '/frame'
     if os.path.isdir(frame_res_dir):
         shutil.rmtree(frame_res_dir)
@@ -116,7 +116,7 @@ def run_demo(opt):
         if not osp.exists(exp_folder):
             os.mkdir(exp_folder)
         output_video_path = osp.join(exp_folder, f'{videoname}.mp4')
-        cmd_str = 'ffmpeg -framerate 30 -i {}/%05d.jpg -c:v libx264 -pix_fmt yuv420p -crf 23 {}' \
+        cmd_str = 'ffmpeg -framerate 1 -i {}/%05d.jpg -c:v libx264 -r 30 {}' \
             .format(osp.join(frame_res_dir), output_video_path)
         os.system(cmd_str)
         res_str = "rm -r frame_res_dir"
