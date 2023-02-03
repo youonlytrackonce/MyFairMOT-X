@@ -1,0 +1,15 @@
+{
+    "root":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data",
+    "train":
+    {
+        "mot20":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/smallmot20.train"
+    },
+    "test_emb":
+    {
+        "mot20":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/smallmot20.train"
+    },
+    "test":
+    {
+        "mot20":"/home/fatih/phd/fairmot-x-model/FairMOT-X-Weights/src/data/smallmot20.train"
+    }
+}

@@ -61,7 +61,7 @@ def run(opt):
                                                    opt.resume,
                                                    opt.lr,
                                                    opt.lr_step)
-
+    print('START EPOCH: {}'.format(start_epoch))
     # Get dataloader
     train_loader = torch.utils.data.DataLoader(dataset=dataset,
                                                 batch_size=opt.batch_size,

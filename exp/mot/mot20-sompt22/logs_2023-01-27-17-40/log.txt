@@ -1,3 +1,0 @@
-2023-01-27-18-48: epoch: 1 |tot_loss 0.700168 | iou_loss 2.399334 | l1_loss 0.000000 | conf_loss 1.049033 | cls_loss 0.598889 | reid_loss 0.010480 | time 67.633333
-2023-01-27-19-55: epoch: 2 |tot_loss -0.117116 | iou_loss 1.881348 | l1_loss 0.000000 | conf_loss 0.500544 | cls_loss 0.513503 | reid_loss 0.007421 | time 67.700000
-2023-01-27-21-03: epoch: 3 |tot_loss -0.510707 | iou_loss 1.659779 | l1_loss 0.000000 | conf_loss 0.402308 | cls_loss 0.473359 | reid_loss 0.006684 | time 67.866667

@@ -1,24 +1,24 @@
 ==> torch version: 1.13.1
-==> cudnn version: 8302
+==> cudnn version: 8500
 ==> Cmd:
-['./src/train.py', 'mot', '--exp_id', 'mot20-sompt22', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '7e-4', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/ubuntu/phd/FairCenterMOT/models/yolox_s.pth', '--batch_size', '1', '--gpus', '0', '--data_cfg', '/home/ubuntu/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json', '--reid_cls_id', '0', '--num_epochs', '1', '--num_workers', '14']
+['./src/train.py', 'mot', '--exp_id', 'mot20-sompt22', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '1e-3', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/exp/mot/mot20-sompt22/logs_2023-01-28-06-22-fairmotx-mot20-sompt22/model_79.pth', '--batch_size', '4', '--gpus', '0', '--resume', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json', '--reid_cls_id', '0', '--num_epochs', '150', '--num_workers', '8']
 ==> Opt:
   K: 200
   arch: yolox
   augment: True
-  batch_size: 1
+  batch_size: 4
   cat_spec_wh: False
-  chunk_sizes: [1]
+  chunk_sizes: [4]
   conf_thre: 0.4
-  data_cfg: /home/ubuntu/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json
+  data_cfg: /home/fatih/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json
   data_dir: /hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT
   dataset: jde
-  debug_dir: /home/ubuntu/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22/debug
+  debug_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22/debug
   dense_wh: False
   det_thre: 0.4
   detection_only: False
   down_ratio: 8
-  exp_dir: /home/ubuntu/phd/FairCenterMOT/src/lib/../../exp/mot
+  exp_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot
   exp_id: mot20-sompt22
   fix_res: True
   freeze_backbone: False
@@ -41,10 +41,10 @@
   keep_res: False
   kitti_test: False
   l1_loss: False
-  load_model: /home/ubuntu/phd/FairCenterMOT/models/yolox_s.pth
-  lr: 0.0007
+  load_model: /home/fatih/phd/FairCenterMOT/exp/mot/mot20-sompt22/logs_2023-01-28-06-22-fairmotx-mot20-sompt22/model_79.pth
+  lr: 0.001
   lr_step: [2]
-  master_batch_size: 1
+  master_batch_size: 4
   metric: loss
   min_box_area: 20
   mosaic: True
@@ -56,10 +56,10 @@
   not_prefetch_test: False
   not_reg_offset: False
   num_classes: 1
-  num_epochs: 1
+  num_epochs: 150
   num_iters: -1
   num_stacks: 1
-  num_workers: 14
+  num_workers: 8
   off_weight: 1
   output_format: video
   output_root: ../results
@@ -71,11 +71,11 @@
   reid_cls_ids: 0
   reid_dim: 128
   reid_only: False
-  resume: False
-  root_dir: /home/ubuntu/phd/FairCenterMOT/src/lib/../..
+  resume: True
+  root_dir: /home/fatih/phd/FairCenterMOT/src/lib/../..
   save_all: False
-  save_dir: /home/ubuntu/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22
-  seed: tensor(161)
+  save_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22
+  seed: tensor(211)
   start_epoch: 1
   task: mot
   test: False
