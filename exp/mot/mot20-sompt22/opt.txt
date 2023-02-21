@@ -1,16 +1,16 @@
 ==> torch version: 1.13.1
 ==> cudnn version: 8500
 ==> Cmd:
-['./src/train.py', 'mot', '--exp_id', 'mot20-sompt22', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '1e-3', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/exp/mot/mot20-sompt22/logs_2023-01-28-06-22-fairmotx-mot20-sompt22/model_79.pth', '--batch_size', '4', '--gpus', '0', '--resume', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json', '--reid_cls_id', '0', '--num_epochs', '150', '--num_workers', '8']
+['./src/train.py', 'mot', '--exp_id', 'mot20-sompt22', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '1e-3', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/models/yolox_s.pth', '--batch_size', '16', '--gpus', '0', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json', '--reid_cls_id', '0', '--num_epochs', '30', '--num_workers', '8']
 ==> Opt:
   K: 200
   arch: yolox
   augment: True
-  batch_size: 4
+  batch_size: 16
   cat_spec_wh: False
-  chunk_sizes: [4]
+  chunk_sizes: [16]
   conf_thre: 0.4
-  data_cfg: /home/fatih/phd/FairCenterMOT/src/lib/cfg/mot20-sompt22.json
+  data_cfg: /home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json
   data_dir: /hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT
   dataset: jde
   debug_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22/debug
@@ -41,22 +41,22 @@
   keep_res: False
   kitti_test: False
   l1_loss: False
-  load_model: /home/fatih/phd/FairCenterMOT/exp/mot/mot20-sompt22/logs_2023-01-28-06-22-fairmotx-mot20-sompt22/model_79.pth
+  load_model: /home/fatih/phd/FairCenterMOT/models/yolox_s.pth
   lr: 0.001
   lr_step: [2]
-  master_batch_size: 4
+  master_batch_size: 16
   metric: loss
   min_box_area: 20
   mosaic: True
   multi_scale: False
-  nID_dict: defaultdict(<class 'int'>, {0: 535904})
+  nID_dict: defaultdict(<class 'int'>, {0: 339564})
   nms_thre: 0.4
   norm_wh: False
   not_cuda_benchmark: False
   not_prefetch_test: False
   not_reg_offset: False
   num_classes: 1
-  num_epochs: 150
+  num_epochs: 30
   num_iters: -1
   num_stacks: 1
   num_workers: 8
@@ -71,11 +71,11 @@
   reid_cls_ids: 0
   reid_dim: 128
   reid_only: False
-  resume: True
+  resume: False
   root_dir: /home/fatih/phd/FairCenterMOT/src/lib/../..
   save_all: False
   save_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/mot20-sompt22
-  seed: tensor(211)
+  seed: tensor(88)
   start_epoch: 1
   task: mot
   test: False

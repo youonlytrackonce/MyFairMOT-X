@@ -1,17 +1,11 @@
-*.pt
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+.idea
+.vscode
 *.pth
 *.jpg
 *.jpeg
+*.png
 *.mp4
-*.avi
-.vscode
-.idea
-*.so
-*.o
-*pyc
-_ext
-build
-DCNv2.egg-info
-dist
-vendor/
 

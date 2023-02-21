@@ -532,7 +532,7 @@ class YOLOXHead(nn.Module):
                 
                 for i in track_ids[inds].long():
                     if i < 0 or i > self.nID_dict[cls_id]:
-                        print(f"Out of Bounds ID Found for Class {cls_id}: {i}", flush=True)
+                        pass#print(f"Out of Bounds ID Found for Class {cls_id}: {i}", flush=True)
     
                 inds = [i for i in range(gt_classes.shape[0]) if int(gt_classes[i]) == int(cls_id) and 0 <= track_ids[i] < self.nID_dict[cls_id]]
 
