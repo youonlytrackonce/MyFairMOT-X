@@ -315,7 +315,7 @@ def FindFreeGPU():
 if __name__ == '__main__':
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     opt = opts().init()
-    opt.device = FindFreeGPU()
+    opt.device = '0'
     
     if opt.kitti_test:
         val_data = "kitti_test/"
