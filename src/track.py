@@ -191,22 +191,22 @@ def eval_seq(opt,
         if frame_id > 0:
             if show_image:
                 cv2.imshow('online_im', online_im)
+                vid_h, vid_w, _ = online_im.shape
             if save_dir is not None:
-                cv2.imwrite(os.path.join(save_dir, '{:05d}.jpg'.format(frame_id)), online_im)
-        vid_h, vid_w, _ = online_im.shape
+                cv2.imwrite(os.path.join(save_dir, '{:05d}.jpg'.format(frame_id)), online_im)       
         # update frame id
         frame_id += 1
 
     # write track/detection results
     if write_result:
-        write_results(result_f_name,results_dict, 'mot', img_dim=(vid_h,vid_w),padding=(dw, dh))
+        write_results(result_f_name,results_dict, 'mot', img_dim=(1080,1920),padding=(dw, dh))
 
     return frame_id, timer.average_time, timer.calls
 
 
 def main(opt,
          data_root='/home/fatih/phd/FairCenterMOT/src/data',
-         det_root=None, seqs=('SOMPT22',),
+         det_root=None, seqs=('SOMPT22'),
          exp_name='demo',
          save_images=False,
          save_videos=False,
@@ -251,31 +251,36 @@ def main(opt,
         n_frame += nf
         timer_avgs.append(ta)
         timer_calls.append(tc)
-
+        
+        # eval
+        logger.info('Evaluate seq: {}'.format(seq))
+        evaluator = Evaluator(data_root, seq, data_type)
+        accs.append(evaluator.eval_file(result_filename))    
     # ----- timing
     timer_avgs = np.asarray(timer_avgs)
     timer_calls = np.asarray(timer_calls)
     all_time = np.dot(timer_avgs, timer_calls)
     avg_time = all_time / np.sum(timer_calls)
     logger.info('Time elapsed: {:.2f} seconds, FPS: {:.2f}'.format(all_time, 1.0 / avg_time))
-
-def FindFreeGPU():
-    """
-    :return:
-    """
-    os.system('nvidia-smi -q -d Memory |grep -A4 GPU|grep Free > tmp')
-    memory_left_gpu = [int(x.split()[2]) for x in open('tmp', 'r').readlines()]
-
-    most_free_gpu_idx = np.argmax(memory_left_gpu)
-    # print(str(most_free_gpu_idx))
-    return int(most_free_gpu_idx)
+    
+    # get summary
+    metrics = mm.metrics.motchallenge_metrics
+    mh = mm.metrics.create()
+    summary = Evaluator.get_summary(accs, seqs, metrics)
+    strsummary = mm.io.render_summary(
+        summary,
+        formatters=mh.formatters,
+        namemap=mm.io.motchallenge_metric_names
+    )
+    print(strsummary)
+    Evaluator.save_summary(summary, os.path.join(result_root, 'summary_{}.xlsx'.format(exp_name)))
 
 if __name__ == '__main__':
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    os.environ['CUDA_VISIBLE_DEVICES'] = str(0)
     opt = opts().init()
-    opt.device = '0'
+    opt.device = 0
     
-    val_data = "/home/fatih/phd/mot_dataset/SOMP22/images/train/"
+    val_data = "/home/fatih/phd/FairCenterMOT/src/data/SOMPT22/train/SOMPT22-04/img1"
     seqs = os.listdir(val_data)
 
     main(opt,
