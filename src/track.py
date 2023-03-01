@@ -33,15 +33,13 @@ import lib.datasets.yolomot as datasets
 from lib.opts import opts
 
 
-class_names = ["pedestrian", "rider", "car", "truck", "bus", "train", "motorcycle", "bicycle"]
+class_names = ["pedestrian"]
 
 
 def write_results(filename, results, data_type, img_dim=(375, 1242), bbox_dim=(576, 1024), padding=(0,0)):
     
     if data_type == 'mot':
         save_format = '{frame},{id},{x1},{y1},{w},{h},1,-1,-1,-1\n'
-    elif data_type == 'kitti':
-        save_format = '{frame} {id} {cls} 0 3 -10 {x1} {y1} {x2} {y2} -10 -10 -10 -1000 -1000 -1000 {score}\n'
     else:
         raise ValueError(data_type)
     
@@ -88,43 +86,6 @@ def write_results(filename, results, data_type, img_dim=(375, 1242), bbox_dim=(5
 
     logger.info('save results to {}'.format(filename))
     
-
-def write_bdd_results(filename, results, img_dim=(720, 1280), bbox_dim=(576, 1024), padding=(0,0)):
-
-    videoName = filename.split("/")[-1].split(".")[0]
-    im_h, im_w = img_dim
-    bbox_h, bbox_w = bbox_dim
-    
-    json_results = [{
-            "videoName"     : videoName,
-            "name"          : videoName + "-" + str(x+1).rjust(7,"0") + ".jpg",
-            "frameIndex"    : x,
-            "labels"        : []
-        } for x in range(len(results[0]))]
-    
-    # Each Class Has List of Frame Index
-    for class_id, frames in results.items():
-        # Each Frame is (frameIndex, list(bboxes), list(track IDs), list(scores))
-        for (frame, bboxes, track_ids, scores) in frames:
-            for tlwh, track_id in zip(bboxes, track_ids):
-                l_dict = {}
-                l_dict['id'] = str(track_id)
-                l_dict['category'] = class_names[int(class_id)]
-                x1, y1, w, h = tlwh
-                x2, y2 = x1 + w, y1 + h
-                x1 *= im_w / bbox_w
-                x2  *= im_w / bbox_w
-                y1 *= im_h / bbox_h
-                y2  *= im_h / bbox_h
-                l_dict['box2d'] = {'x1': x1, 'x2': x2, 'y1': y1, 'y2': y2}
-                json_results[frame-1]["labels"].append(l_dict)
-                
-    logger.info('save results to {}'.format(filename))
-
-    with open(filename if ".json" in filename else filename + ".json", 'w') as f:
-        json.dump(json_results, f)
-
-
 def format_dets_dict2dets_list(dets_dict, w, h):
     """
     :param dets_dict:
@@ -153,7 +114,7 @@ def eval_seq(opt,
              show_image=True,
              frame_rate=30,
              mode='track',
-             data_type='bdd'):
+             data_type='mot'):
     """
     :param opt:
     :param data_loader:
@@ -238,17 +199,14 @@ def eval_seq(opt,
 
     # write track/detection results
     if write_result:
-        if data_type == 'bdd':
-            write_bdd_results(result_f_name, results_dict)
-        else:
-            write_results(result_f_name,results_dict, 'mot', img_dim=(vid_h,vid_w),padding=(dw, dh))
+        write_results(result_f_name,results_dict, 'mot', img_dim=(vid_h,vid_w),padding=(dw, dh))
 
     return frame_id, timer.average_time, timer.calls
 
 
 def main(opt,
-         data_root='/data/bdd100k/images/train',
-         det_root=None, seqs=('bdd100k',),
+         data_root='/home/fatih/phd/FairCenterMOT/src/data',
+         det_root=None, seqs=('SOMPT22',),
          exp_name='demo',
          save_images=False,
          save_videos=False,
@@ -265,7 +223,7 @@ def main(opt,
     mkdir_if_missing(result_root)
     
 
-    data_type = 'bdd' if not opt.kitti_test else 'kitti'
+    data_type = 'mot'
 
     # run tracking
     accs = []
@@ -317,11 +275,7 @@ if __name__ == '__main__':
     opt = opts().init()
     opt.device = '0'
     
-    if opt.kitti_test:
-        val_data = "kitti_test/"
-    else:
-        val_data = "/home/fatih/phd/mot_dataset/bdd100k/images/val/"
-
+    val_data = "/home/fatih/phd/mot_dataset/SOMP22/images/train/"
     seqs = os.listdir(val_data)
 
     main(opt,

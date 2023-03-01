@@ -229,7 +229,7 @@ class opts(object):
                                  help='load data from cfg')
         self.parser.add_argument('--data_dir',
                                  type=str,
-                                 default='/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT')
+                                 default='/home/fatih/phd/FairCenterMOT/src/data/')
 
         # loss
         self.parser.add_argument('--uncertainty_loss',
@@ -374,7 +374,7 @@ class opts(object):
         print('The output will be saved to ', opt.save_dir)
 
         if opt.resume and opt.load_model == '':
-            model_path = os.path.join('/hpctmp/e0425991/modelrepo/FairMOT-X/', opt.exp_id)
+            model_path = os.path.join('/home/fatih/phd/FairCenterMOT/models/', opt.exp_id)
             opt.load_model = os.path.join(model_path, 'model_last.pth')
 
             if not os.path.exists(opt.load_model):

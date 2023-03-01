@@ -874,13 +874,13 @@ class BDD100K(LoadImagesAndLabels):  # for training
         self.height = self.default_input_wh[1]
         
         # ------ Check for QuickLoad of File Indexes
-        img_files = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/img_files.json"
-        lab_files = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/label_files.json"
-        tid_num   = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/tid_num.json"
+        img_files = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/img_files.json"
+        lab_files = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/label_files.json"
+        tid_num   = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/tid_num.json"
 
-        imgfilval = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/img_filesval.json"
-        labfilval = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/label_filesval.json"
-        tidnumval = "/hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT/tid_numval.json"
+        imgfilval = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/img_filesval.json"
+        labfilval = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/label_filesval.json"
+        tidnumval = "/home/fatih/phd/FairCenterMOT/src/data/bdd100k/bdd100k/MOT/tid_numval.json"
         
         if os.path.exists(lab_files) and not opt.val:
             print("Loading existing img and label indexes...")
