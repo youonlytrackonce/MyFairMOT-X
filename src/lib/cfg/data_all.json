@@ -2,15 +2,15 @@
     "root":"/home/fatih/phd/FairCenterMOT/src/data",
     "train":
     {
-        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
+        "data_all":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
     },
     "test_emb":
     {
-        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
+        "data_all":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
     },
     
     "test":
     {
-        "mot20-sompt22":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
+        "data_all":"/home/fatih/phd/FairCenterMOT/src/data/data_all.train"
     }
 }

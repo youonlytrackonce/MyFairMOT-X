@@ -1,14 +1,14 @@
 ==> torch version: 1.13.1
 ==> cudnn version: 8500
 ==> Cmd:
-['./src/train.py', 'mot', '--exp_id', 'data_all', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '1e-3', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/models/yolox_s.pth', '--batch_size', '16', '--gpus', '0', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json', '--reid_cls_id', '0', '--num_epochs', '30', '--num_workers', '8']
+['./src/train.py', 'mot', '--exp_id', 'data_all', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '1e-3', '--lr_step', '2', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/models/yolox_s.pth', '--batch_size', '12', '--gpus', '0', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json', '--reid_cls_id', '0', '--num_epochs', '30', '--num_workers', '8']
 ==> Opt:
   K: 200
   arch: yolox
   augment: True
-  batch_size: 16
+  batch_size: 12
   cat_spec_wh: False
-  chunk_sizes: [16]
+  chunk_sizes: [12]
   conf_thre: 0.4
   data_cfg: /home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json
   data_dir: /hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT
@@ -44,7 +44,7 @@
   load_model: /home/fatih/phd/FairCenterMOT/models/yolox_s.pth
   lr: 0.001
   lr_step: [2]
-  master_batch_size: 16
+  master_batch_size: 12
   metric: loss
   min_box_area: 20
   mosaic: True
@@ -75,7 +75,7 @@
   root_dir: /home/fatih/phd/FairCenterMOT/src/lib/../..
   save_all: False
   save_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/data_all
-  seed: tensor(248)
+  seed: tensor(5)
   start_epoch: 1
   task: mot
   test: False
