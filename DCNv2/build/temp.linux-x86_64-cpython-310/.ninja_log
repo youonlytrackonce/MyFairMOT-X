@@ -1,0 +1,5 @@
+# ninja log v5
+0	7491	1676366965620964132	/home/fatih/phd/FairCenterMOT/DCNv2/build/temp.linux-x86_64-cpython-310/home/fatih/phd/FairCenterMOT/DCNv2/src/cpu/dcn_v2_im2col_cpu.o	d4f89952a3e5526e
+1	7872	1676366966000963965	/home/fatih/phd/FairCenterMOT/DCNv2/build/temp.linux-x86_64-cpython-310/home/fatih/phd/FairCenterMOT/DCNv2/src/cpu/dcn_v2_psroi_pooling_cpu.o	fe7718b74d0c5a76
+0	8286	1676366966416963778	/home/fatih/phd/FairCenterMOT/DCNv2/build/temp.linux-x86_64-cpython-310/home/fatih/phd/FairCenterMOT/DCNv2/src/cpu/dcn_v2_cpu.o	cd7cbf96a15cc670
+3	24965	1676366983092954296	/home/fatih/phd/FairCenterMOT/DCNv2/build/temp.linux-x86_64-cpython-310/home/fatih/phd/FairCenterMOT/DCNv2/src/vision.o	afc1b25ff59c810
