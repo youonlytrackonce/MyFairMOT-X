@@ -1,0 +1,101 @@
+==> torch version: 1.13.1
+==> cudnn version: 8500
+==> Cmd:
+['./src/train.py', 'mot', '--exp_id', 'data_all', '--yolo_depth', '0.67', '--yolo_width', '0.75', '--lr', '7e-3', '--lr_step', '20,40', '--reid_dim', '128', '--augment', '--mosaic', '--load_model', '/home/fatih/phd/FairCenterMOT/models/yolox_s.pth', '--batch_size', '8', '--gpus', '0', '--data_cfg', '/home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json', '--reid_cls_id', '0', '--num_epochs', '150', '--num_workers', '8']
+==> Opt:
+  K: 200
+  arch: yolox
+  augment: True
+  batch_size: 8
+  cat_spec_wh: False
+  chunk_sizes: [8]
+  conf_thre: 0.4
+  data_cfg: /home/fatih/phd/FairCenterMOT/src/lib/cfg/data_all.json
+  data_dir: /hpctmp/e0425991/datasets/bdd100k/bdd100k/MOT
+  dataset: jde
+  debug_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/data_all/debug
+  dense_wh: False
+  det_thre: 0.4
+  detection_only: False
+  down_ratio: 8
+  exp_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot
+  exp_id: data_all
+  fix_res: True
+  freeze_backbone: False
+  gen_scale: True
+  gpus: [0]
+  gpus_str: 0
+  head_conv: 256
+  hide_data_time: False
+  hm_weight: 1
+  id_loss: ce
+  id_weight: 1
+  input_h: -1
+  input_img: /users/duanyou/c5/all_pretrain/test.txt
+  input_mode: video
+  input_res: -1
+  input_video: 
+  input_w: -1
+  input_wh: (1024, 576)
+  is_debug: False
+  keep_res: False
+  kitti_test: False
+  l1_loss: False
+  load_model: /home/fatih/phd/FairCenterMOT/models/yolox_s.pth
+  lr: 0.007
+  lr_step: [20, 40]
+  master_batch_size: 8
+  metric: loss
+  min_box_area: 20
+  mosaic: True
+  multi_scale: False
+  nID_dict: defaultdict(<class 'int'>, {0: 339564})
+  nms_thre: 0.4
+  norm_wh: False
+  not_cuda_benchmark: False
+  not_prefetch_test: False
+  not_reg_offset: False
+  num_classes: 1
+  num_epochs: 150
+  num_iters: -1
+  num_stacks: 1
+  num_workers: 8
+  off_weight: 1
+  output_format: video
+  output_root: ../results
+  pad: 31
+  post_conv_layers: 0
+  print_iter: 0
+  reg_loss: l1
+  reg_offset: True
+  reid_cls_ids: 0
+  reid_dim: 128
+  reid_only: False
+  resume: False
+  root_dir: /home/fatih/phd/FairCenterMOT/src/lib/../..
+  save_all: False
+  save_dir: /home/fatih/phd/FairCenterMOT/src/lib/../../exp/mot/data_all
+  seed: tensor(67)
+  start_epoch: 1
+  task: mot
+  test: False
+  test_det: False
+  test_emb: False
+  test_mot15: False
+  test_mot16: False
+  test_mot17: False
+  test_mot20: False
+  track_buffer: 30
+  trainval: False
+  uncertainty_loss: True
+  val: False
+  val_intervals: 10
+  val_mot15: False
+  val_mot16: False
+  val_mot17: False
+  val_mot20: False
+  vis_thresh: 0.5
+  wh_weight: 0.1
+  yolo: l
+  yolo_depth: 0.67
+  yolo_width: 0.75

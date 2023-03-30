@@ -86,7 +86,7 @@ def run(opt):
     
     for epoch in range(start_epoch + 1, opt.num_epochs + 1):
         
-        if epoch > 135:
+        if epoch > 15:
             print(f'No Mosaic from Epoch 15 - Now Using L1 Loss', flush=True)
             dataset.mosaic = False
             model.head.use_l1 = True

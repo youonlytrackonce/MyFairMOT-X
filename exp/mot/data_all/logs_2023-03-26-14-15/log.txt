@@ -1,0 +1,5 @@
+2023-03-26-16-09: epoch: 1 |tot_loss 7.330275 | iou_loss 3.824030 | l1_loss 0.000000 | conf_loss 21.634526 | cls_loss 2.118322 | reid_loss 0.140550 | time 113.466667
+2023-03-26-18-05: epoch: 2 |tot_loss 8.849440 | iou_loss 3.752607 | l1_loss 0.000000 | conf_loss 27.823084 | cls_loss 2.493905 | reid_loss 0.134403 | time 116.016667
+2023-03-26-20-00: epoch: 3 |tot_loss 7.512937 | iou_loss 3.725405 | l1_loss 0.000000 | conf_loss 22.771763 | cls_loss 2.356163 | reid_loss 0.131287 | time 114.733333
+2023-03-26-21-54: epoch: 4 |tot_loss 6.866422 | iou_loss 3.718262 | l1_loss 0.000000 | conf_loss 20.383624 | cls_loss 2.300116 | reid_loss 0.129101 | time 114.566667
+2023-03-26-23-50: epoch: 5 |tot_loss 6.527541 | iou_loss 3.700019 | l1_loss 0.000000 | conf_loss 19.214978 | cls_loss 2.272145 | reid_loss 0.127433 | time 115.316667

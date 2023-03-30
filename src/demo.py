@@ -106,7 +106,7 @@ def run_demo(opt):
         output_video_path = osp.join(exp_folder, f'{videoname}.mp4')
         cmd_str = 'ffmpeg -framerate 1 -i {}/%05d.jpg -c:v libx264 -r 30 {}' \
             .format(osp.join(frame_res_dir), output_video_path)
-        os.system(cmd_str)
+        #os.system(cmd_str)
         res_str = "rm -r {}".format(frame_res_dir)
         os.system(res_str)
 
